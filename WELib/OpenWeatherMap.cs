@@ -12,7 +12,7 @@ namespace WELib
     /// <summary>
     /// Class for open weather map API functions!
     /// </summary>
-  
+
 
     public class OpenWeatherMap
     {
@@ -29,7 +29,7 @@ namespace WELib
         /// <param name="CityName">Provide a city name!</param>
         /// <param name="units">Add metric for Celsius/Add imperial for Fahrenheit</param>
         /// <returns></returns>
-        public static string WeatherForecast(string apiKey,string CityName, string units)
+        public static string WeatherForecast(string apiKey, string CityName, string units)
         {
             string outs = string.Empty;
             try
@@ -37,7 +37,7 @@ namespace WELib
 
                 if (apiKey.Length > 0) // we check the lenght of api key and units
                 {
-                    if (units.Length > 0) 
+                    if (units.Length > 0)
                     {
 
                         //Open weather map API link with celsius 

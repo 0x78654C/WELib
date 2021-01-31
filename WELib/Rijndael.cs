@@ -38,8 +38,8 @@ namespace WELib
             }
             catch (Exception e)
             {
-                throw new Exception ("Error: Something went wrong on decryption!");
-              
+                throw new Exception("Error: Something went wrong on decryption!");
+
             }
             return DecryptedData;
 
@@ -51,7 +51,7 @@ namespace WELib
         /// <param name="input">Enter string for encryption</param>
         /// <param name="secret">Enter your secret key</param>
         /// <returns>string</returns>
-        public static string EncryptData(string input,string secret)
+        public static string EncryptData(string input, string secret)
         {
             string EncryptedData = string.Empty;
             try

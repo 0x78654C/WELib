@@ -8,11 +8,11 @@ using System.Web.Script.Serialization;
 
 namespace WELib
 {
-    /// <summary>
-    /// AES Encryption method
-    /// </summary>
-    public class AES
-    {
+	/// <summary>
+	/// AES Encryption method
+	/// </summary>
+	public class AES
+	{
 		/// <summary>
 		/// AES encryption class with dynmic keysize and blocksize change
 		/// </summary>
@@ -31,17 +31,17 @@ namespace WELib
 			try
 			{
 				//set default vaule to 128
-				if(KeySize <= 0)
-                {
+				if (KeySize <= 0)
+				{
 					KeySize = 128;
-                }
+				}
 
-				if(BlockSize <= 0)
-                {
+				if (BlockSize <= 0)
+				{
 					BlockSize = 128;
-                }
+				}
 				//---------------------------------
-				
+
 				RijndaelManaged aes = new RijndaelManaged();
 				aes.KeySize = KeySize;
 				aes.BlockSize = BlockSize;
