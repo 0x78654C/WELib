@@ -1,0 +1,6 @@
+F:\twitch\Projects\WELib\WELib\bin\Debug\WELib.dll
+F:\twitch\Projects\WELib\WELib\bin\Debug\WELib.pdb
+F:\twitch\Projects\WELib\WELib\obj\Debug\WELib.csprojAssemblyReference.cache
+F:\twitch\Projects\WELib\WELib\obj\Debug\WELib.csproj.CoreCompileInputs.cache
+F:\twitch\Projects\WELib\WELib\obj\Debug\WELib.dll
+F:\twitch\Projects\WELib\WELib\obj\Debug\WELib.pdb
