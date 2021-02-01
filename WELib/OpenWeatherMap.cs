@@ -72,12 +72,12 @@ namespace WELib
                         }
                         outs = l;
                         //renaming output parts
-                        outs = outs.Replace("temp:", "T");
-                        outs = outs.Replace("feels_like:", "F");
-                        outs = outs.Replace("temp_min:", "Mi");
-                        outs = outs.Replace("temp_max:", "Ma");
-                        outs = outs.Replace("humidity:", "H");
-                        outs = outs.Replace("speed:", "W");
+                        outs = outs.Replace("temp:", "");
+                        outs = outs.Replace("feels_like:", "");
+                        outs = outs.Replace("temp_min:", "");
+                        outs = outs.Replace("temp_max:", "");
+                        outs = outs.Replace("humidity:", "");
+                        outs = outs.Replace("speed:", "");
                         outs = Regex.Replace(outs, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
                         //---------------------------------
                     }

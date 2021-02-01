@@ -11,7 +11,7 @@ namespace WELib
 	/// <summary>
 	/// AES Encryption method
 	/// </summary>
-	public class AES
+	public static class AES
 	{
 		/// <summary>
 		/// AES encryption class with dynmic keysize and blocksize change
@@ -102,6 +102,25 @@ namespace WELib
 				//------------------------
 
 
+				//            switch (KeySize)
+				//            {
+				//	case 0:
+				//		KeySize = 128;
+				//		break;
+				//	case 128:
+				//	if(key.Length==16 | key.Length = 32)
+				//                    {
+
+				//                    }
+				//		break;
+				//	case 256:
+				//		break;
+
+				//}
+
+
+
+
 				RijndaelManaged aes = new RijndaelManaged();
 				aes.KeySize = KeySize;
 				aes.BlockSize = BlockSize;
@@ -142,6 +161,16 @@ namespace WELib
 			{
 				return hmac.ComputeHash(encoding.GetBytes(data));
 			}
+		}
+		public static string SplitByLength(this string str, int maxLength)
+		{
+			string s="";
+			for (int index = 0; index < str.Length; index += maxLength)
+			{
+			 s= str.Substring(index, Math.Min(maxLength, str.Length - index));
+			}
+			return s;
+
 		}
 	}
 }

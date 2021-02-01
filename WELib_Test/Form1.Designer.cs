@@ -40,6 +40,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cityBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // encryptBTN
@@ -60,6 +64,7 @@
             this.decryptBTN.TabIndex = 1;
             this.decryptBTN.Text = "Decrypt";
             this.decryptBTN.UseVisualStyleBackColor = true;
+            this.decryptBTN.Click += new System.EventHandler(this.decryptBTN_Click);
             // 
             // secretBox
             // 
@@ -68,9 +73,11 @@
             this.secretBox.Name = "secretBox";
             this.secretBox.Size = new System.Drawing.Size(218, 32);
             this.secretBox.TabIndex = 2;
+            this.secretBox.TextChanged += new System.EventHandler(this.secretBox_TextChanged);
             // 
             // outBox
             // 
+            this.outBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outBox.Location = new System.Drawing.Point(12, 12);
             this.outBox.Multiline = true;
             this.outBox.Name = "outBox";
@@ -79,6 +86,7 @@
             // 
             // inBox
             // 
+            this.inBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inBox.Location = new System.Drawing.Point(12, 185);
             this.inBox.Multiline = true;
             this.inBox.Name = "inBox";
@@ -149,11 +157,55 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "City Name:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(570, 339);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Key Lenght:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(653, 339);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 16);
+            this.label6.TabIndex = 13;
+            this.label6.Text = " 0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 349);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(119, 16);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Encryption speed: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(125, 349);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(18, 16);
+            this.label8.TabIndex = 15;
+            this.label8.Text = " 0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cityBox);
             this.Controls.Add(this.label3);
@@ -191,6 +243,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox cityBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
 

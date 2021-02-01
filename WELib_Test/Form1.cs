@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -52,18 +54,48 @@ namespace WELib_Test
         {
             string apiKey = File.ReadAllText(Directory.GetCurrentDirectory() + @"\apikey.txt");
             string forecast = WELib.OpenWeatherMap.WeatherForecast(apiKey, cityBox.Text, "metric");
-
+            forecast = Regex.Replace(forecast, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+            Stopwatch sw = new Stopwatch();
             if (inBox.Text.Length > 0)
             {
-                //WELib.AES.Encrypt(inBox.Text, secretBox.Text + forecast, 256, 256);
+                string s = WELib.AES.SplitByLength(secretBox.Text + forecast, 32);
                 outBox.Clear();
-                 outBox.Text += "weather data: "+forecast;
-                outBox.Text += "Encrypted: "+WELib.Rijndael.EncryptData(inBox.Text, secretBox.Text + forecast);
+                outBox.Text += "\n new key: " + s+" end key ";
+                sw.Start();
+                string ee = WELib.AES.Encrypt(inBox.Text, secretBox.Text, Int32.Parse(textBox1.Text),Int32.Parse( textBox2.Text));
+               // string ee= WELib.Rijndael.EncryptData(inBox.Text, secretBox.Text + forecast);
+                sw.Stop();
+                label8.Text = sw.ElapsedMilliseconds+@" milliseconds \ " +sw.ElapsedTicks +" tiks";
+              //  outBox.Text += "Encrypted: " + ee;
+
+              //  outBox.Text += "weather data: "+forecast;
+                
+                //  outBox.Text += "Encrypted: "+WELib.Rijndael.EncryptData(inBox.Text, secretBox.Text + forecast);
             }
             else
             {
                 MessageBox.Show("InBox must be filled");
             }
+        }
+
+        private void decryptBTN_Click(object sender, EventArgs e)
+        {
+            if (inBox.Text.Length > 0)
+            {
+                outBox.Clear();
+                outBox.Text+= "decrypted: " + WELib.AES.Decrypt(inBox.Text, secretBox.Text, Int32.Parse(textBox1.Text), Int32.Parse(textBox2.Text));
+            }
+            else
+            {
+                MessageBox.Show("InBox must be filled");
+            }
+        }
+
+
+
+        private void secretBox_TextChanged(object sender, EventArgs e)
+        {
+            label6.Text = secretBox.Text.Length.ToString();
         }
     }
 }
