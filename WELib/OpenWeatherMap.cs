@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace WELib
 {
     /// <summary>
-    /// Class for open weather map API functions!
+    /// Class for openweathermap.org API functions!
     /// </summary>
 
 
@@ -18,7 +18,6 @@ namespace WELib
     {
         //declare the variables
         static readonly HttpClient clientH = new HttpClient();
-
         //------------------------------
 
 
@@ -64,7 +63,7 @@ namespace WELib
                             {
 
                                 //we check only for what we need, like: temp, feel, humidity, wind speed
-                                if (line.Contains("temp") || line.Contains("feel") || line.Contains("humidity") || line.Contains("speed"))
+                                if (line.Contains("temp") || line.Contains("feel") || line.Contains("humidity") || line.Contains("speed") || line.Contains("pressure"))
                                 {
                                     l += line + Environment.NewLine;
                                 }
@@ -78,7 +77,7 @@ namespace WELib
                         outs = outs.Replace("temp_max:", "");
                         outs = outs.Replace("humidity:", "");
                         outs = outs.Replace("speed:", "");
-                        outs = Regex.Replace(outs, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+                        outs = outs.Replace("pressure:", "");
                         //---------------------------------
                     }
                     else

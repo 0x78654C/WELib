@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace WELib
 {
+    /// <summary>
+    /// Rijndael Encyption class
+    /// </summary>
     public class Rijndael
     {
 
@@ -36,7 +39,7 @@ namespace WELib
                 cryptoStream.Close();
                 DecryptedData = System.Text.Encoding.Unicode.GetString(PlainText, 0, DecryptedCount);
             }
-            catch (Exception e)
+            catch 
             {
                 throw new Exception("Error: Something went wrong on decryption!");
 
@@ -73,7 +76,7 @@ namespace WELib
                 EncryptedData = Convert.ToBase64String(CipherBytes);
 
             }
-            catch (Exception e)
+            catch 
             {
                 throw new Exception("Error: Something went wrong on encryption!");
             }

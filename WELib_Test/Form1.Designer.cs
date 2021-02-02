@@ -81,16 +81,16 @@
             this.outBox.Location = new System.Drawing.Point(12, 12);
             this.outBox.Multiline = true;
             this.outBox.Name = "outBox";
-            this.outBox.Size = new System.Drawing.Size(776, 151);
+            this.outBox.Size = new System.Drawing.Size(776, 179);
             this.outBox.TabIndex = 3;
             // 
             // inBox
             // 
             this.inBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inBox.Location = new System.Drawing.Point(12, 185);
+            this.inBox.Location = new System.Drawing.Point(12, 201);
             this.inBox.Multiline = true;
             this.inBox.Name = "inBox";
-            this.inBox.Size = new System.Drawing.Size(526, 151);
+            this.inBox.Size = new System.Drawing.Size(526, 135);
             this.inBox.TabIndex = 4;
             // 
             // textBox1

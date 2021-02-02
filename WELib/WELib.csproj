@@ -46,6 +46,7 @@
     <Compile Include="OpenWeatherMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rijndael.cs" />
+    <Compile Include="WE.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

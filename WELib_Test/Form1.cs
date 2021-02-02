@@ -55,21 +55,31 @@ namespace WELib_Test
             string apiKey = File.ReadAllText(Directory.GetCurrentDirectory() + @"\apikey.txt");
             string forecast = WELib.OpenWeatherMap.WeatherForecast(apiKey, cityBox.Text, "metric");
             forecast = Regex.Replace(forecast, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+            forecast = forecast.Replace("\r", "");
             Stopwatch sw = new Stopwatch();
             if (inBox.Text.Length > 0)
             {
-                string s = WELib.AES.SplitByLength(secretBox.Text + forecast, 32);
-                outBox.Clear();
-                outBox.Text += "\n new key: " + s+" end key ";
-                sw.Start();
-                string ee = WELib.AES.Encrypt(inBox.Text, secretBox.Text, Int32.Parse(textBox1.Text),Int32.Parse( textBox2.Text));
-               // string ee= WELib.Rijndael.EncryptData(inBox.Text, secretBox.Text + forecast);
-                sw.Stop();
-                label8.Text = sw.ElapsedMilliseconds+@" milliseconds \ " +sw.ElapsedTicks +" tiks";
-              //  outBox.Text += "Encrypted: " + ee;
+                string com = WELib.WE.WeatherKeyGenrateAES(forecast, 32,false);
 
-              //  outBox.Text += "weather data: "+forecast;
-                
+        
+                outBox.Clear();
+                outBox.Text += "Forecast info: " + forecast + Environment.NewLine;
+                outBox.Text += "Forecast generated AES key: " + com + Environment.NewLine;
+                outBox.Text += "Forecast generated AES key Length: " + com.Length.ToString() + Environment.NewLine;
+                outBox.Text += "_______________________________________________________________________________"+Environment.NewLine;
+                sw.Start();
+                outBox.Text += Environment.NewLine+"AES Encrypted Output: " +WELib.AES.Encrypt(inBox.Text, com, Int32.Parse(textBox1.Text), Int32.Parse(textBox2.Text)) + Environment.NewLine;
+                sw.Stop();
+
+
+                // string ee = WELib.AES.Encrypt(inBox.Text, secretBox.Text, Int32.Parse(textBox1.Text),Int32.Parse( textBox2.Text));
+                // string ee= WELib.Rijndael.EncryptData(inBox.Text, secretBox.Text + forecast);
+
+                label8.Text = sw.ElapsedMilliseconds + @" milliseconds \ " + sw.ElapsedTicks + " tiks";
+                //  outBox.Text += "Encrypted: " + ee;
+
+                //  outBox.Text += "weather data: "+forecast;
+
                 //  outBox.Text += "Encrypted: "+WELib.Rijndael.EncryptData(inBox.Text, secretBox.Text + forecast);
             }
             else
@@ -83,7 +93,7 @@ namespace WELib_Test
             if (inBox.Text.Length > 0)
             {
                 outBox.Clear();
-                outBox.Text+= "decrypted: " + WELib.AES.Decrypt(inBox.Text, secretBox.Text, Int32.Parse(textBox1.Text), Int32.Parse(textBox2.Text));
+                outBox.Text += "decrypted: " + WELib.AES.Decrypt(inBox.Text, secretBox.Text, Int32.Parse(textBox1.Text), Int32.Parse(textBox2.Text));
             }
             else
             {
@@ -97,5 +107,35 @@ namespace WELib_Test
         {
             label6.Text = secretBox.Text.Length.ToString();
         }
+
+
+        public string[] SplitStringLenght(string s, int split)
+        {
+
+
+            List<string> list = new List<string>();
+
+            // Integer Division
+            int TimesThroughTheLoop = s.Length / split;
+
+
+            for (int i = 0; i < TimesThroughTheLoop; i++)
+            {
+                list.Add(s.Substring(i * split, split));
+
+            }
+
+            // Pickup the end of the string
+            if (TimesThroughTheLoop * split != s.Length)
+            {
+                list.Add(s.Substring(TimesThroughTheLoop * split));
+            }
+
+            return list.ToArray();
+
+
+        }
+
     }
+    
 }
